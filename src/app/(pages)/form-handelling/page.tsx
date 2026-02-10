@@ -174,7 +174,7 @@ const DynamicForm = () => {
         // Optional: Reset form? The prompt says "Do not lose user input on error", 
         // usually on success we DO clear, but I'll leave it populated to show the result.
       }
-    } catch (err) {
+    } catch {
       setServerErrors({ root: 'Unexpected network crash' });
     } finally {
       setIsSubmitting(false);

@@ -119,7 +119,7 @@ const Page = () => {
         // Hard failure (400, 500)
         updateTransactionStatus(tx.id, 'error');
       }
-    } catch (error) {
+    } catch {
       if (attempt < MAX_RETRIES) {
         console.log(`[${tx.id}] Attempt ${attempt} failed. Retrying in ${RETRY_DELAY}ms...`);
         setTimeout(() => processTransaction(tx, attempt + 1), RETRY_DELAY);
