@@ -1,101 +1,79 @@
-import Image from "next/image";
+import React from 'react';
 
-export default function Home() {
+const Page = () => {
+  const assignments = [
+    { id: 1, title: 'Assignment 01', subtitle: 'Eventually Consistent Form', href: '/eventually-consistent-form' },
+    { id: 2, title: 'Assignment 02', subtitle: 'Out-of-Order Event Handling', href: '/out-of-order' },
+    { id: 3, title: 'Assignment 03', subtitle: 'Quirky Pagination', href: '/quirky' },
+    { id: 4, title: 'Assignment 04', subtitle: 'Form Validator', href: '/form-handelling' },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen w-full bg-[#FDFCF5] text-black font-sans flex flex-col items-center justify-center p-8">
+      
+      {/* Header */}
+      <header className="mb-12 text-center">
+        <h1 className="text-4xl font-light tracking-tighter lowercase">
+          Bhumio
+        </h1>
+        <p className="mt-2 text-sm text-gray-500 font-mono">
+          assignments
+        </p>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+      {/* Links Container */}
+      <div className="w-full max-w-md space-y-4">
+        {assignments.map((item) => (
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            key={item.id}
+            href={item.href}
+            className="group relative block w-full border border-black px-6 py-5 transition-all duration-300 ease-out 
+                       hover:bg-black hover:text-[#FDFCF5] hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="font-mono text-xs opacity-60 mb-1 block group-hover:opacity-80">
+                  0{item.id}
+                </span>
+                <h2 className="text-lg font-medium tracking-tight">
+                  {item.title}
+                </h2>
+                
+                {/* --- SUBTITLE SECTION --- */}
+                <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out group-hover:max-h-10 group-hover:opacity-100 group-hover:mt-1">
+                  <p className="font-mono text-xs text-gray-400 group-hover:text-[#FDFCF5]/80">
+                    {item.subtitle}
+                  </p>
+                </div>
+
+                
+              </div>
+
+              {/* Arrow Icon */}
+              <div className="transform transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        ))}
+      </div>
+
+      {/* Footer / Decorative minimal element */}
+      <div className="mt-16 h-px w-12 bg-black opacity-20"></div>
     </div>
   );
-}
+};
+
+export default Page;
